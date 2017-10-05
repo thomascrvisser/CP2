@@ -6,23 +6,16 @@ var Gimmie = {
     appId: '',
 
     toggleLoading: function(){
-        // Toggle loading indicator
+       
         this.$content.toggleClass('content--loading');
 
-        // Toggle the submit button so we don't get double submissions
-        // http://stackoverflow.com/questions/4702000/toggle-input-disabled-attribute-using-jquery
+      
         this.$form.find('button').prop('disabled', function(i, v) { return !v; });
     },
 
     throwError: function(header, body){
-        // Remove animation class
         this.$content.removeClass('content--error-pop');
-
-        // Trigger reflow
-        // https://css-tricks.com/restart-css-animation/
         this.$content[0].offsetWidth = this.$content[0].offsetWidth;
-
-        // Add classes and content
         this.$content
             .html('<p><strong>' + header + '</strong> ' + body + '</p>')
             .addClass('content--error content--error-pop');
@@ -30,10 +23,7 @@ var Gimmie = {
         this.toggleLoading();
     },
 
-    validate: function() {
-        // Use regex to test if input is valid. It's valid if:
-        //  1. It begins with 'http://itunes'
-        //  2. It has '/id' followed by digits in the string somewhere
+    validate: function(){
         var regUrl = /^(http|https):\/\/itunes/,
             regId = /\/id(\d+)/i;
         if ( regUrl.test(this.userInput) && regId.test(this.userInput) ) {
@@ -55,8 +45,6 @@ var Gimmie = {
                 .append('<p><strong>' + response.trackName + '</strong> Actual icon dimensions: ' + this.naturalWidth + '×' + this.naturalHeight + '</p>')
                 .removeClass('content--error');
             Gimmie.toggleLoading();
-
-            // If it's an iOS icon, load the mask too
             if(response.kind != 'mac-software') {
                 var mask = new Image();
                 mask.src = 'assets/img/icon-mask.png';
@@ -83,13 +71,9 @@ $(document).ready(function(){
                 dataType: 'JSONP'
             })
             .done(function(response) {
-
-                // Get the first response and log it
                 var response = response.results[0];
                 console.log(response);
 
-                // Check to see if request is valid & contains the info we want
-                // If it does, render it. Otherwise throw an error
                 if(response && response.artworkUrl512 != null){
                     Gimmie.render(response);
                 } else {
