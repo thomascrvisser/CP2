@@ -9,7 +9,7 @@
 
 html {
   box-sizing: border-box;
-  background: #EEE;
+  background: #F4F4F4;
   text-align: center;
 }
 
@@ -20,7 +20,7 @@ body {
     max-width: 43.75em; /* 880/16 */
     margin: 0 auto;
     padding: 0;
-    color: #4A4A4A;
+    color: #C0B283;
 }
 
 img {
@@ -29,7 +29,7 @@ img {
 }
 
 a {
-    color: inherit;
+    color: #373737 ;
 }
 
 /*
@@ -37,7 +37,7 @@ a {
 */
 header {
     margin: 1em 0 2em;
-    color: #000000;
+    color: #C0B283;
 }
 
     header h1 {
@@ -65,10 +65,7 @@ header {
         }
     }
 
-/*
-    Form Input
-    Styles for the form input and button
-*/
+
 form {
     position: relative;
 }
@@ -93,7 +90,7 @@ form {
 
     form button {
         text-decoration: none;
-        background: #000000;
+        background: #373737;
         height: 100%;
         position: absolute;
         right: 0;
@@ -149,7 +146,7 @@ form {
 
     .content em {
         font-style: normal;
-        background-color: lightyellow;
+        background-color: #F4F4F4;
     }
 
     .content img[src*="icon-mask.png"] {
@@ -184,9 +181,3 @@ form {
         color: #000000;
     }
 
-    /* .content--error-pop {
-        -webkit-animation: pop .333s;
-        -moz-animation: pop .333s;
-        -o-animation: pop .333s;
-        animation: pop .333s;
-    } */
